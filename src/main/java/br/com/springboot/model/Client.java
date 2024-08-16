@@ -18,7 +18,7 @@ import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name="clientes")
-public class Cliente {
+public class Client {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -95,4 +95,20 @@ public class Cliente {
 		this.ativo = ativo;
 	}
 	
+	@Override
+	public String toString() {
+		String cliente = "";
+		cliente +="CLIENTE\n";
+		cliente +="-------------------------\n";
+		cliente +="ID.......: " + this.id + "\n";
+		cliente +="Nome.....: " + this.nome + "\n";
+		cliente +="CPF......: " + this.cpf + "\n";
+		cliente +="Data Nasc: " + this.dataDeNascimento + "\n";
+		cliente +="Sexo.....: " + this.sexo.getDescricao() + "\n";
+		cliente +="Telefone.: " + this.telefone + "\n";
+		cliente +="Celular..: " + this.celular + "\n";
+		cliente +="Email....: " + this.email + "\n";
+		cliente +="Ativo....: " + (this.ativo ? "Sim" : "Não") + "\n";
+		return cliente;
+	}
 }
