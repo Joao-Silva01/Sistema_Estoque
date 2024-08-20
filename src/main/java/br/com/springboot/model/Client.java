@@ -2,6 +2,7 @@ package br.com.springboot.model;
 
 import java.time.LocalDate;
 
+import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.format.annotation.DateTimeFormat;
 
 // javax.persistence foi substituído por jakarta.persistence
@@ -15,6 +16,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name="clientes")
@@ -22,21 +27,35 @@ public class Client {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	@Column(nullable=false, length= 50)
+	@NotBlank(message = "informe o nome")
+	@Size(min = 3, max=50)
 	private String nome;
-	@Column(length= 11)
+	
+	@Column(length= 14)
+	@CPF(message="CPF inválido")
 	private String cpf;
+	
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	@Column(name="data_nascimento", columnDefinition="DATE")
-	private LocalDate dataDeNascimento; 
+	@NotNull(message = "informe a data de nascimento")
+	private LocalDate dataDeNascimento;
+	
 	@Enumerated(EnumType.STRING)
+	@NotNull(message="informe o sexo")
 	private Sexo sexo;
-	@Column(length=10)
+	
+	@Column(length=14)
 	private String telefone;
-	@Column(length=11)
+	
+	@Column(length=15)
 	private String celular;
+	
 	@Column(length=50)
+	@Email(message = "E-mail inválido")
 	private String email;
+	
 	private boolean ativo;
 	
 	
