@@ -22,7 +22,7 @@ public class ClienteController {
 	@Autowired
 	private ClientBO clientBO;
 	
-	@RequestMapping(value = "/novos", method = RequestMethod.GET)
+	@RequestMapping(value = "/novo", method = RequestMethod.GET)
 	public ModelAndView novo(ModelMap model) {
 		model.addAttribute("cliente", new Client());
 		return new ModelAndView("/cliente/formulario", model);

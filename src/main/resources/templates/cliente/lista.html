@@ -10,11 +10,15 @@
 	<style> body{ padding-top: 4.5rem; } </style>
 	</head>
 	<body>
+	
+		<div th:replace="fragments/menu :: menu"></div>
+		
 		<div class="container">
+		<div class="bg-light p-5 rounded">
 			<h1>Clientes</h1>
 			<hr>
 			<div>
-				<a class="btn btn-primary" th:href="@{/clientes/novos}">Novo</a>
+				<a class="btn btn-primary" th:href="@{/clientes/novo}">Novo</a>
 			</div>
 			<hr>
 			<div th:if="${!#strings.isEmpty(feedback)}"
@@ -51,6 +55,7 @@
 					</tr>
 				</tbody>
 			</table>
+			</div>
 		</div>
 	</body>
 </html>
