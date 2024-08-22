@@ -29,7 +29,7 @@ public class SupplierController {
 	}
 	
 	@RequestMapping(value="", method= RequestMethod.POST)
-	public String saves(@Valid @ModelAttribute("supplier") Supplier supplier, BindingResult result, RedirectAttributes attr) {
+	public String save(@Valid @ModelAttribute("supplier") Supplier supplier, BindingResult result, RedirectAttributes attr) {
 		if(result.hasErrors()) {
 			System.out.println(result);
 			return "/supplier/formulario";
@@ -46,17 +46,17 @@ public class SupplierController {
 	
 	@RequestMapping(value="", method= RequestMethod.GET)
 	public ModelAndView list(ModelMap model) {
-		model.addAttribute("suppliers", supplierBO.list());
-		return new ModelAndView("/supplier/list", model);
+		model.addAttribute("supplier", supplierBO.list());
+		return new ModelAndView("/supplier/lista", model);
 	}
 	
 	@RequestMapping(value="/edit/{id}", method= RequestMethod.GET)
 	public ModelAndView edit(@PathVariable("id") Long id, ModelMap model) {
 		model.addAttribute("supplier", supplierBO.searchByID(id));
-		return new ModelAndView("/supplier/formilario",model);
+		return new ModelAndView("/supplier/formulario",model);
 	}
 	
-	@RequestMapping(value="/inativa/{id}", method= RequestMethod.GET)
+	@RequestMapping(value="/inactive/{id}", method= RequestMethod.GET)
 	public String inativa(@PathVariable("id") Long id, RedirectAttributes attr) {
 		try {
 			Supplier supplier = supplierBO.searchByID(id);
@@ -68,11 +68,11 @@ public class SupplierController {
 		return "redirect:/suppliers";
 	}
 	
-	@RequestMapping(value="/ativa/{id}", method= RequestMethod.GET)
+	@RequestMapping(value="/active/{id}", method= RequestMethod.GET)
 	public String ativa(@PathVariable("id") Long id, RedirectAttributes attr) {
 		try {
 			Supplier supplier = supplierBO.searchByID(id);
-			supplierBO.inativa(supplier);
+			supplierBO.ativa(supplier);
 			attr.addFlashAttribute("feedback", "Fornecedor ativado com sucesso");
 		}catch(Exception e) {
 			e.printStackTrace();

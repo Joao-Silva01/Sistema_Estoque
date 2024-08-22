@@ -23,12 +23,12 @@ public class Supplier{
 	@Column(nullable=false, length= 50)
 	@NotBlank(message = "informe o nome fantasia")
 	@Size(min = 3, max=50)
-	private String nomeFantasia;
+	private String nomeFornecedor;
 	
 	@Column(nullable=false, length= 50)
 	@NotBlank(message = "informe a razão social")
 	@Size(min = 3, max=50)
-	private String razaiSicuak;
+	private String razaoSocial;
 	
 	@Column(length= 18)
 	@CNPJ(message="CNPJ inválido")
@@ -58,20 +58,20 @@ public class Supplier{
 		this.id = id;
 	}
 
-	public String getNomeFantasia() {
-		return nomeFantasia;
+	public String getNomeFornecedor() {
+		return nomeFornecedor;
 	}
 
-	public void setNomeFantasia(String nomeFantasia) {
-		this.nomeFantasia = nomeFantasia;
+	public void setNomeFornecedor(String nomeFornecedor) {
+		this.nomeFornecedor = nomeFornecedor;
 	}
 
-	public String getRazaiSicuak() {
-		return razaiSicuak;
+	public String getRazaoSocial() {
+		return razaoSocial;
 	}
 
-	public void setRazaiSicuak(String razaiSicuak) {
-		this.razaiSicuak = razaiSicuak;
+	public void setRazaoSocial(String razaoSocial) {
+		this.razaoSocial = razaoSocial;
 	}
 
 	public String getCnpj() {

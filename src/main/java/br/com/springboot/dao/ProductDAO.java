@@ -2,11 +2,9 @@ package br.com.springboot.dao;
 
 import java.util.List;
 
-
 import org.springframework.stereotype.Repository;
 
-import br.com.springboot.model.Client;
-import br.com.springboot.model.Supplier;
+import br.com.springboot.model.Product;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
@@ -14,38 +12,38 @@ import jakarta.transaction.Transactional;
 
 @Repository
 @Transactional
-public class SupplierDAO implements CRUD<Supplier,Long> {
+public class ProductDAO implements CRUD<Product, Long>{
 
 	@PersistenceContext
 	private EntityManager em;
-		
+	
 	@Override
-	public Supplier searchByID(Long id) {
-		return em.find(Supplier.class, id);
+	public Product searchByID(Long id) {
+		return em.find(Product.class, id);
 	}
 
 	@Override
-	public List<Supplier> list() {
-		Query query = em.createQuery("SELECT s FROM Supplier s");
+	public List<Product> list() {
+		Query query= em.createQuery("select p from product p");
 		return query.getResultList();
 	}
 
 	@Override
-	public void insert(Supplier sup) {
-		em.persist(sup);
+	public void insert(Product p) {
+		em.persist(p);
 		
 	}
 
 	@Override
-	public void update(Supplier sup) {
-		em.merge(sup);
+	public void update(Product p) {
+		em.merge(p);
 		
 	}
 
 	@Override
 	public void remove(Long id) {
-		em.remove(id);;
+		em.remove(id);
+		
 	}
-	
 
 }

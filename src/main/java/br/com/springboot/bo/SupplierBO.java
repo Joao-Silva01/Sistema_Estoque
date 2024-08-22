@@ -45,11 +45,11 @@ public class SupplierBO implements CRUD<Supplier, Long>{
 	}
 	
 	public void inativa(Supplier sup){
-		sup.setAtivo(true);
+		sup.setAtivo(false);
 		dao.update(sup);
 	}
 	public void ativa(Supplier sup){
-		sup.setAtivo(false);
+		sup.setAtivo(true);
 		dao.update(sup);
 	}
 }

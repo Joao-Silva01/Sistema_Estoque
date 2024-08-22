@@ -1,12 +1,12 @@
 package br.com.springboot.model;
 
-public enum Sexo {
+public enum Genero {
 	MASCULINO("Masculino"),
 	FEMININO("Feminino");
 	
 	private String descricao;
 	
-	Sexo(String descricao){
+	Genero(String descricao){
 		this.descricao = descricao;
 	}
 	

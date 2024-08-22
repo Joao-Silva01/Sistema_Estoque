@@ -43,8 +43,8 @@ public class Client {
 	private LocalDate dataDeNascimento;
 	
 	@Enumerated(EnumType.STRING)
-	@NotNull(message="informe o sexo")
-	private Sexo sexo;
+	@NotNull(message="informe o gênero")
+	private Genero genero;
 	
 	@Column(length=14)
 	private String telefone;
@@ -83,11 +83,11 @@ public class Client {
 	public void setDataDeNascimento(LocalDate dataDeNascimento) {
 		this.dataDeNascimento = dataDeNascimento;
 	}
-	public Sexo getSexo() {
-		return sexo;
+	public Genero getGenero() {
+		return genero;
 	}
-	public void setSexo(Sexo sexo) {
-		this.sexo = sexo;
+	public void setGenero(Genero genero) {
+		this.genero = genero;
 	}
 	public String getTelefone() {
 		return telefone;
@@ -123,7 +123,7 @@ public class Client {
 		cliente +="Nome.....: " + this.nome + "\n";
 		cliente +="CPF......: " + this.cpf + "\n";
 		cliente +="Data Nasc: " + this.dataDeNascimento + "\n";
-		cliente +="Sexo.....: " + this.sexo.getDescricao() + "\n";
+		cliente +="Genero.....: " + this.genero.getDescricao() + "\n";
 		cliente +="Telefone.: " + this.telefone + "\n";
 		cliente +="Celular..: " + this.celular + "\n";
 		cliente +="Email....: " + this.email + "\n";
