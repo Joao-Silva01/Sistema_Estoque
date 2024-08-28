@@ -28,14 +28,12 @@ public class ProductController {
 	@RequestMapping(value = "/novo", method = RequestMethod.GET)
 	public ModelAndView novo(ModelMap model) {
 		model.addAttribute("product", new Product());
-		model.addAttribute("categories", Arrays.asList(Category.values()));
 		return new ModelAndView("/product/formulario", model);
 	}
 	
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	public String salva(@Valid @ModelAttribute("product") Product product, BindingResult result, RedirectAttributes attr) {
 		if(result.hasErrors()) {
-			System.out.println(result);
 			return "/product/formulario";
 		}
 		if(product.getId() == null) {
@@ -55,8 +53,8 @@ public class ProductController {
 		return new ModelAndView("/product/lista", model);
 	}
 	
-	@RequestMapping(value = "/edita/{id}", method = RequestMethod.GET)
-	public ModelAndView edita(@PathVariable("id") Long id,ModelMap model) {
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+	public ModelAndView edit(@PathVariable("id") Long id,ModelMap model) {
 		model.addAttribute("product", productBO.searchByID(id));
 		return new ModelAndView("/product/formulario", model);
 	}
@@ -76,9 +74,9 @@ public class ProductController {
 	@RequestMapping(value = "/ativa/{id}", method = RequestMethod.GET)
 	public String ativa(@PathVariable("id") Long id,RedirectAttributes attr) {
 		try {
-		Product product = productBO.searchByID(id);
-		productBO.Ativa(product);
-		attr.addFlashAttribute("feedback", "O produto ativado com sucesso");
+			Product product = productBO.searchByID(id);
+			productBO.Ativa(product);
+			attr.addFlashAttribute("feedback", "O produto ativado com sucesso");
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

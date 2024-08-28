@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import br.com.springboot.model.Client;
+import br.com.springboot.model.EntryNote;
 import br.com.springboot.model.Product;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -13,40 +13,41 @@ import jakarta.transaction.Transactional;
 
 @Repository
 @Transactional
-public class ProductDAO implements CRUD<Product, Long>{
+public class EntryNoteDAO implements CRUD<EntryNote, Long>{
 
 	@PersistenceContext
 	private EntityManager em;
 	
 	@Override
-	public Product searchByID(Long id) {
-		return em.find(Product.class, id);
+	public EntryNote searchByID(Long id) {
+		return em.find(EntryNote.class, id);
 	}
 
 	@Override
-	public List<Product> list() {
-		Query query= em.createQuery("select p from Product p");
+	public List<EntryNote> list() {
+		Query query = em.createQuery("SELECT en from EntryNote en");
 		return query.getResultList();
 	}
 
 	@Override
-	public void insert(Product p) {
-		em.persist(p);
+	public void insert(EntryNote en) {
+		em.persist(en);
 		
 	}
 
 	@Override
-	public void update(Product p) {
-		em.merge(p);
+	public void update(EntryNote en) {
+		em.merge(en);
 		
 	}
 
 	@Override
 	public void remove(Long id) {
-		Product product = em.find(Product.class, id);
-        if (product != null) {
-            em.remove(product);
+		EntryNote entryNote = em.find(EntryNote.class, id);
+        if (entryNote != null) {
+            em.remove(entryNote);
         } else {}
+		
 	}
 
 }

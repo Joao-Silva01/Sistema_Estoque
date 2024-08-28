@@ -44,6 +44,7 @@ public class SecurityConfiguration{
     protected SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
         .authorizeRequests()
+        .requestMatchers("api/*").permitAll()
         .requestMatchers(HttpMethod.GET, "/nota-entrada").hasRole("ADMINISTRADOR")
         .requestMatchers(HttpMethod.GET, "/nota-entrada").hasRole("ADMINISTRADOR")
         .requestMatchers(HttpMethod.GET, "/estoque").hasRole("ADMINISTRADOR")
@@ -56,7 +57,12 @@ public class SecurityConfiguration{
         .and()
         	.logout()
         	.logoutUrl("/logout")
-        	.logoutSuccessUrl("/login");
+        	.logoutSuccessUrl("/login")
+        .and()
+        	.cors()
+        .and()
+        	.csrf()
+        	.disable();
         return http.build();
     }
 	

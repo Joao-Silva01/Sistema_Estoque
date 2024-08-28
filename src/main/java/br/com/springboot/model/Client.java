@@ -56,7 +56,7 @@ public class Client {
 	@Email(message = "E-mail inválido")
 	private String email;
 	
-	private boolean ativo;
+	private boolean ativo = true;
 	
 	
 	public Long getId() {

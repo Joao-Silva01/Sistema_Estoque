@@ -13,8 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import br.com.springboot.model.Client;
-import br.com.springboot.model.Sexo;
-import jakarta.transaction.Transactional;
+import br.com.springboot.model.Genero;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
@@ -29,9 +28,9 @@ final public class ClientBOTest {
 	public void insert() {
 		Client cliente = new Client();
 		cliente.setNome("José da Silva");
-		cliente.setCpf("12345678900");
+		cliente.setCpf("03064318233");
 		cliente.setDataDeNascimento(LocalDate.of(2000, 1, 8));
-		cliente.setSexo(Sexo.MASCULINO);
+		cliente.setGenero(Genero.MASCULINO);
 		cliente.setEmail("email@gmail.com");
 		cliente.setTelefone("4133333333");
 		cliente.setCelular("41999999999");
@@ -51,10 +50,8 @@ final public class ClientBOTest {
 	@Order(3)
 	public void update() {
 		Client cliente = bo.searchByID(1L);
-		cliente.setCpf(null);
-		cliente.setTelefone(null);
-		cliente.setCelular(null);
-		cliente.setDataDeNascimento(null);
+		cliente.setTelefone("9698121933");
+		cliente.setCelular("96981219337");
 		bo.update(cliente);
 	}
 	

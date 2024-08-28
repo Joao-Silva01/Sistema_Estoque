@@ -44,7 +44,7 @@ public class Supplier{
 	@Email(message = "E-mail inválido")
 	private String email;
 	
-	private boolean ativo;
+	private boolean ativo = true;
 	
 	public Supplier() {
 		this.ativo=true;

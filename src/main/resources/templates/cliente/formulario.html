@@ -22,8 +22,8 @@
 					<input id="ativo" type="hidden" th:field="*{id}"/>
 					<div class="mb-3 form-check form-switch">
 						<label class="form-check-label" for="ativo">Registro ativo</label>
-						<input class="form-check-input" role="switch" 
-						id="ativo" type="checkbox" th:field="*{ativo}"/>
+						<input class="form-check-input" role="switch"
+							id="ativo" type="checkbox" th:field="*{ativo}"/>
 					</div>
 					
 					<div class="mb-6">
@@ -46,9 +46,9 @@
 						th:errors="*{dataDeNascimento}"></span>
 						</div>
 						<div class="col-4 mb-3">
-							<label class="form-label" for=sexo>Sexo</label>
-							<select class="form-select" id="sexo" th:field="*{sexo}" required>
-								<option value="">Selecione uma opção</option>
+							<label class="form-label" for=genero>Gênero</label>
+							<select class="form-select" id="genero" th:field="*{genero}" required>
+								<option value="">Selecione um gênero</option>
 								<option value="MASCULINO">Masculino</option>
 								<option value="FEMININO">Feminino</option>
 							</select>

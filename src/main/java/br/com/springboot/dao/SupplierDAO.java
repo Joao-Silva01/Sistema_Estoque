@@ -2,7 +2,6 @@ package br.com.springboot.dao;
 
 import java.util.List;
 
-
 import org.springframework.stereotype.Repository;
 
 import br.com.springboot.model.Client;
@@ -44,8 +43,11 @@ public class SupplierDAO implements CRUD<Supplier,Long> {
 
 	@Override
 	public void remove(Long id) {
-		em.remove(id);;
-	}
+        Supplier sup = em.find(Supplier.class, id);
+        if (sup != null) {
+            em.remove(sup);
+        } else {}
+        }
 	
 
 }

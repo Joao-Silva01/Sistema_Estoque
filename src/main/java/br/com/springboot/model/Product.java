@@ -19,15 +19,16 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank(message="informe o nome")
+	@NotBlank(message="informe o nome do produto")
 	@Column(nullable=false,length =50)
-	private String nome;
+	private String nomeProduto;
 	
 	@NotNull(message="informe a categoria")
 	@Enumerated(EnumType.STRING)
 	private Category categoria;
 	
-	private boolean ativo;
+	private boolean ativo = true;
+	
 	
 	public Product() {
 		this.ativo = true;
@@ -41,12 +42,12 @@ public class Product {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getNomeProduto() {
+		return nomeProduto;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNomeProduto(String nomeProduto) {
+		this.nomeProduto = nomeProduto;
 	}
 
 	public Category getCategoria() {
